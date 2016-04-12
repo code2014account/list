@@ -16,7 +16,11 @@
 
   <% if user_signed_in? %>
   Signed in as: <strong><%= current_user.email %></strong> |
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <%= image_tag current_user.avatar_url(48), class: "gravatar" %>
+           <div class="pull-right">
+
+             <%= link_to current_user.name, user_path(current_user) %> <br/> <%= link_to "Sign Out", session_path(current_user), method: :delete %>
+           </div>
 <% else %>
   <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
   <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>

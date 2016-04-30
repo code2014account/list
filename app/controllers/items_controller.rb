@@ -7,22 +7,20 @@ class ItemsController < ApplicationController
       @item = Item.find(params[:id])
   end
 
-
   def create
 
-  @item = Item.new
-  @item.title = params[:item][:title]
-  @item.body = params[:item][:body]
+    @item = Item.new
+    @item.name = params[:item][:name]
+    @item.user = current_user
 
-
-  if @item.save
-
-    flash[:notice] = "Item was saved successfully."
-    redirect_to @item
+    if name.save
+    flash[:notice] = "Comment saved successfully."
+# #12
+    redirect_to [@item.name, @item]
   else
-
-    flash.now[:alert] = "There was an error saving the Item. Please try again."
-    render :new
+    flash[:alert] = "Comment failed to save."
+# #13
+    redirect_to [@item.name, @item]
   end
 end
 

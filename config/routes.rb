@@ -3,22 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:show] do
-    resources :items
-
+    resources :items, only: [:create, :update, :destroy]
   end
 
+  root 'welcome#index'
  # did not work
  # get '/:id' => 'controller#action'
-
-
-
-  get 'welcome/index'
-
-  get 'welcome/about'
-
-  root 'items#create'
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

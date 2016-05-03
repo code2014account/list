@@ -1,8 +1,11 @@
-<div class="media">
-   <div class="media-body">
-     <small>
-       <%= item.user.name %> commented <%= time_ago_in_words(.created_at) %> ago
-     </small>
-     <p><%= item.name %></p>
-   </div>
- </div>
+<tr>
+  <td>
+    <%= item.name %>
+  </td>
+  <td>
+
+  </td>
+  <td>
+    <%= link_to "Completed", user_item_path(current_user, item), method: :delete, class: "btn btn-success" %>
+  </td>
+</tr>

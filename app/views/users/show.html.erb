@@ -1,12 +1,22 @@
-<% @user.items.each do |item| %>
-  <%= item.name  %>
-<% end %>
+<h2>Things To Do</h2>
 
-<%= form_for [current_user, Item.new], remote: true do |f| %>
-  <div class="form-group input-group">
-    <%= f.text_field :name, class: 'form-control', :maxlength => 50, placeholder: 'Enter a task (50 characters max)' %>
-    <span class="input-group-btn">
-      <%= f.submit "Add", class: 'btn btn-success' %>
-    </span>
-  </div>
-<% end %>
+Hi, <%= current_user.email %>!
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>
+        Task
+      </th>
+      <th>
+        Time remaining
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <%= render current_user.items %>
+
+
+</table>
+
+<%= render partial: "items/form" %>

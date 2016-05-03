@@ -1,29 +1,31 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
-
-  def show
-      @item = Item.find(params[:id])
-  end
 
   def create
-
-    @item = Item.new
-    @item.name = params[:item][:name]
+    @item = Item.new(item_params)
     @item.user = current_user
 
-    if name.save
-    flash[:notice] = "Comment saved successfully."
-# #12
-    redirect_to [@item.name, @item]
-  else
-    flash[:alert] = "Comment failed to save."
-# #13
-    redirect_to [@item.name, @item]
+    if @item.save
+      redirect_to current_user, notice: "Your item was saved"
+    else
+      flash[:error] = "Error creating item. Please try again."
+      render "users/show"
+    end
   end
-end
 
-  def edit
+  def destroy
+    @item = Item.find(params[:id])
+
+    if @item.destroy
+      flash[:notice] = "\"#{@item.name}\" was deleted succesfully."
+    else
+      flash[:error] = "There was an error deleting the task."
+    end
+    redirect_to current_user
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name)
   end
 end

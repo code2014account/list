@@ -13,10 +13,10 @@ class ItemsController < ApplicationController
     @item.name = params[:item][:name]
     @item.user = current_user
 
-    if name.save
+    if @item.save
     flash[:notice] = "Comment saved successfully."
 # #12
-    redirect_to [@item.name, @item]
+    redirect_to user_item_path(current_user, @item)
   else
     flash[:alert] = "Comment failed to save."
 # #13
@@ -26,4 +26,8 @@ end
 
   def edit
   end
+  #
+  # def item_params
+  #    params.require(:item).permit(:name)
+  # end
 end

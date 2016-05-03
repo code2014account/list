@@ -7,5 +7,6 @@
 
   <% if current_user %>
 
-    <%= render 'items/form', name: Name.new, item: @item %>
+    <%= render partial: 'form', name: Name.new, item: @item %>
+    <%= render @item.names %>
   <% end %>

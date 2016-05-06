@@ -1,7 +1,13 @@
 <tr>
   <td>
     <%= item.name %>
+
   </td>
-  <td></td>
-  <td></td>
+  <td>
+    <%= link_to "Delete item", @item, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %>
+  </td>
+  <td>
+    <%= time_ago_in_words(Time.now - 7.days, include_seconds: true) %>
+  </td>
+
 </tr>

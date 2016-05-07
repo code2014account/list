@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
 
+  require 'action_view'
+
+include ActionView::Helpers::DateHelper
+
   def create
     @item = Item.new(item_params)
     @item.user = current_user

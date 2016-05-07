@@ -7,7 +7,8 @@
     <%= link_to "Delete item", user_item_path(current_user, item), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %>
   </td>
   <td>
-    <%= time_ago_in_words(Time.now - 7.days, include_seconds: true) %>
+
+    <%= distance_of_time_in_words(Time.now, 7.days.from_now) %>
   </td>
 
 </tr>

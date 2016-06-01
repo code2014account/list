@@ -1,8 +1,8 @@
-<h4>Add a New Item</h4>
 <%= form_for [current_user, @item] do |f| %>
-  <div class="col-xs-4">
+  <div class="input-group">
     <%= f.text_field :name, class: 'form-control', placeholder: "What needs to get done?" %>
+    <span class="input-group-btn">
+      <%= f.submit "Add Item", class: 'btn btn-secondary pull-left' %>
+    </span>
   </div>
-  <%= f.submit "Add Item", class: 'btn btn-primary pull-left' %>
-  
 <% end %>

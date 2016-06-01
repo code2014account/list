@@ -16,3 +16,11 @@
 
  // @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .main.container {
+   margin-top: 2em;
+ }
+
+ .table {
+   border-radius: 5px;
+ }

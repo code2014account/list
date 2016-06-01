@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :items, only: [:create, :update, :destroy]
   end
 
-  root 'welcome#index'
+  root 'users#show'
  # did not work
  # get '/:id' => 'controller#action'
 
